@@ -1,0 +1,16 @@
+# VIO + 関節角の動作確認
+$ ros2 run tf2_ros tf2_echo world base_link
+# VIO の動作確認
+$ ros2 run tf2_ros tf2_echo world camera
+# 関節角の動作確認
+$ ros2 run tf2_ros tf2_echo base_link head_camera_link
+
+
+# carry_and_release
+ros2 action send_goal /behavior_planner/carry_and_release_server/carry_and_release_action move_msgs/CarryAndRelease "{target_speed: 0.10, gait: 'crawl', goal_point: {header: {frame_id: 'world'}, point: {x: 1.4, y: 1.8}}, goal_radius: 0.30, goal_heading_yaw_tolerance: 0.30}"
+ros2 topic pub /carry_and_release/carry_and_release_goal_topic move_msgs/msg/CarryAndRelease "{target_speed: 0.10, gait: 'crawl', goal_point: {header: {frame_id: 'world'}, point: {x: 1.0, y: 1.0}}, goal_radius: 0.30}" -1
+# enjoy_fan_cooling
+ros2 action send_goal /enjoy_fan_cooling_server/enjoy_fan_cooling_action move_msgs/EnjoyFanCooling "{seqid: '1', target_speed: 0.08, gait: 'crawl', goal_point: {header: {frame_id: 'world'}, point: {x: 0.25, y: 1.75}}, goal_radius: 0.3}"
+ros2 topic pub --once /enjoy_fan_cooling_server/enjoy_fan_cooling_goal_topic move_msgs/msg/EnjoyFanCooling "{seqid: '1', gait: 'crawl', target_speed: 0.10, goal_point: {header: {frame_id: 'world'}, point: {x: 1.4, y: 1.8}}, goal_radius: 0.35}"
+# navigate_to_pose
+ros2 action send_goal /behavior_planner/move_controller/navigate_to_pose move_controller_msgs/NavigateToPose "{seqid: 'abc001', priority_level: 10.0, timeout_sec: 100.0, goal_pose: {header: {frame_id: 'world'}, pose: {position: {x: 1.0, y: 1.0}}}, approach_distance: 0.0, distance_tolerance: 0.3, heading_tolerance: 3.14, target_move: {target_speed: 0.20, gait: 'crawl', goal_heading_mode: 'ALL_DIRECTION', move_type: 'SLALOM'}}"
