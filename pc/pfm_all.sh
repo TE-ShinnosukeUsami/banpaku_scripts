@@ -77,7 +77,7 @@ echo -n "Waiting for docker (7s)... "
   spinner "Initializing docker..."
 )&
 SPINNER_PID=$!
-sleep 7
+sleep 8
 stop_spinner "${SPINNER_PID}"
 echo -e "${GREEN}Pane 0: Docker initialized.${RESET}"
 tmux send-keys -t "${SESSION}:0.0" 'cd ros2_ws/src/launch_ros/; . ./fastrtps_config/run_discovery_server_local.sh' C-m
@@ -92,7 +92,7 @@ echo -n "Waiting for docker (7s)... "
   spinner "Initializing docker..."
 )&
 SPINNER_PID=$!
-sleep 7
+sleep 8
 stop_spinner "${SPINNER_PID}"
 echo -e "${GREEN}Pane 1: Docker initialized.${RESET}"
 tmux send-keys -t "${SESSION}:0.1" 'cd ros2_ws/src/launch_ros/; . ./fastrtps_config/run_discovery_server_remote.sh' C-m
@@ -117,7 +117,7 @@ echo -n "Waiting for docker (7s)... "
   spinner "Initializing docker..."
 )&
 SPINNER_PID=$!
-sleep 7
+sleep 8
 stop_spinner "${SPINNER_PID}"
 echo -e "${GREEN}Pane 2: Docker initialized.${RESET}"
 
@@ -140,7 +140,7 @@ echo -n "Waiting for docker (7s)... "
   spinner "Initializing docker..."
 )&
 SPINNER_PID=$!
-sleep 7
+sleep 8
 stop_spinner "${SPINNER_PID}"
 echo -e "${GREEN}Pane 3: Docker initialized.${RESET}"
 
@@ -163,7 +163,7 @@ echo -n "Waiting for docker (7s)... "
   spinner "Initializing docker..."
 )&
 SPINNER_PID=$!
-sleep 7
+sleep 8
 stop_spinner "${SPINNER_PID}"
 echo -e "${GREEN}Pane 4: Docker initialized.${RESET}"
 
