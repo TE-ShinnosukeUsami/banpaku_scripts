@@ -1,0 +1,3 @@
+Ctrl+B d : detach session
+Ctrl+B & : kill window
+Ctrl+B 0-9: move to window

@@ -101,10 +101,7 @@ tmux send-keys -t "${SESSION}:0.1" '1' C-m
 sleep 0.5
 tmux send-keys -t "${SESSION}:0.1" '44.53.01.5f.45.50.52.4f.53.49.4d.41' C-m
 sleep 0.5
-#tmux send-keys -t "${SESSION}:0.1" '192.168.10.101' C-m #P2
-#tmux send-keys -t "${SESSION}:0.1" '192.168.10.105' C-m #P1
-tmux send-keys -t "${SESSION}:0.1" '43.21.213.16' C-m #P1-SEN
-#tmux send-keys -t "${SESSION}:0.1" '43.21.214.161' C-m #P2-SEN
+tmux send-keys -t "${SESSION}:0.1" '192.168.10.101' C-m
 sleep 0.5
 tmux send-keys -t "${SESSION}:0.1" '11812' C-m
 sleep 0.5
@@ -130,8 +127,8 @@ sleep 0.5
 tmux send-keys -t "${SESSION}:0.2" 'source ../../install/setup.bash' C-m
 sleep 0.5
 tmux send-keys -t "${SESSION}:0.2" 'cd launch' C-m
-#sleep 0.5
-#tmux send-keys -t "${SESSION}:0.2" 'ros2 launch aibo_map_vdetr.launch.py' C-m
+sleep 0.5
+tmux send-keys -t "${SESSION}:0.2" 'ros2 launch aibo_map_vdetr.launch.py' C-m
 
 
 ## Pane 3: start rviz

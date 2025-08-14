@@ -3,6 +3,13 @@ set -euo pipefail
 
 # ==============================
 USER_PASS="sony1234"
+REMOTE_DISCOVERY_SERVER_ID="2"
+PROTO1X_DISCOVERY_GUID="44.53.01.5f.45.50.52.4f.53.49.4d.41"
+#PROTO1X_IP_ADDRESS="43.21.213.16"
+PROTO1X_IP_ADDRESS="192.168.10.105"
+PROTO2_DISCOVERY_GUID="44.53.03.5f.45.50.52.4f.53.49.4d.41"
+#PROTO2_IP_ADDRESS="43.21.214.161"
+PROTO2_IP_ADDRESS="192.168.10.101"
 # ==============================
 
 # ANSI escape sequence definitions
@@ -97,18 +104,22 @@ stop_spinner "${SPINNER_PID}"
 echo -e "${GREEN}Pane 1: Docker initialized.${RESET}"
 tmux send-keys -t "${SESSION}:0.1" 'cd ros2_ws/src/launch_ros/; . ./fastrtps_config/run_discovery_server_remote.sh' C-m
 sleep 0.5
-tmux send-keys -t "${SESSION}:0.1" '1' C-m
+tmux send-keys -t "${SESSION}:0.1" '2' C-m
 sleep 0.5
-tmux send-keys -t "${SESSION}:0.1" '44.53.01.5f.45.50.52.4f.53.49.4d.41' C-m
+tmux send-keys -t "${SESSION}:0.1" ${PROTO1X_DISCOVERY_GUID} C-m
 sleep 0.5
-#tmux send-keys -t "${SESSION}:0.1" '192.168.10.101' C-m #P2
-#tmux send-keys -t "${SESSION}:0.1" '192.168.10.105' C-m #P1
-tmux send-keys -t "${SESSION}:0.1" '43.21.213.16' C-m #P1-SEN
-#tmux send-keys -t "${SESSION}:0.1" '43.21.214.161' C-m #P2-SEN
+tmux send-keys -t "${SESSION}:0.1" ${PROTO1X_IP_ADDRESS} C-m
 sleep 0.5
 tmux send-keys -t "${SESSION}:0.1" '11812' C-m
 sleep 0.5
-tmux send-keys -t "${SESSION}:0.1" '2' C-m
+tmux send-keys -t "${SESSION}:0.1" ${PROTO2_DISCOVERY_GUID} C-m
+sleep 0.5
+tmux send-keys -t "${SESSION}:0.1" ${PROTO2_IP_ADDRESS} C-m
+sleep 0.5
+tmux send-keys -t "${SESSION}:0.1" '11812' C-m
+sleep 0.5
+
+tmux send-keys -t "${SESSION}:0.1" ${REMOTE_DISCOVERY_SERVER_ID} C-m
 
 
 ## Pane 2: start PFM
